@@ -14,6 +14,8 @@
 
 
 #define NGX_WRITE_SHUTDOWN SD_SEND
+#define NGX_READ_SHUTDOWN  SD_RECEIVE
+#define NGX_RDWR_SHUTDOWN  SD_BOTH
 
 
 typedef SOCKET  ngx_socket_t;
@@ -30,6 +32,9 @@ int ngx_blocking(ngx_socket_t s);
 
 #define ngx_nonblocking_n   "ioctlsocket(FIONBIO)"
 #define ngx_blocking_n      "ioctlsocket(!FIONBIO)"
+
+int ngx_socket_nread(ngx_socket_t s, int *n);
+#define ngx_socket_nread_n  "ioctlsocket(FIONREAD)"
 
 #define ngx_shutdown_socket    shutdown
 #define ngx_shutdown_socket_n  "shutdown()"

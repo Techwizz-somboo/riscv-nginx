@@ -80,8 +80,6 @@ typedef long  time_t;
 
 #pragma warning(default:4201)
 
-/* disable some "-W4" level warnings */
-
 /* 'type cast': from function pointer to data pointer */
 #pragma warning(disable:4054)
 
@@ -105,6 +103,9 @@ typedef long  time_t;
 
 /* array is too small to include a terminating null character */
 #pragma warning(disable:4295)
+
+/* conversion from 'type1' to 'type2' of greater size */
+#pragma warning(disable:4306)
 
 #endif
 
@@ -271,6 +272,10 @@ typedef int                 sig_atomic_t;
 #ifndef NGX_HAVE_SO_SNDLOWAT
 /* setsockopt(SO_SNDLOWAT) returns error WSAENOPROTOOPT */
 #define NGX_HAVE_SO_SNDLOWAT         0
+#endif
+
+#ifndef NGX_HAVE_FIONREAD
+#define NGX_HAVE_FIONREAD            1
 #endif
 
 #define NGX_HAVE_GETADDRINFO         1
